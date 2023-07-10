@@ -1,25 +1,18 @@
-name: CI Workflow
-
+name: run the workflow
 on:
-  push:
-    branches:
-      - master
+  repository_dispatch:
+    types: [trigger-event]
 
 jobs:
   build-and-test:
+    name: run-workflow
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Run Tests
-        run: npm test
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: print trigger details
+    run: |
+      echo ${{ github.event.client_payload.github.action}}
+      echo ${{ github.event.client_payload.github.actor }}
