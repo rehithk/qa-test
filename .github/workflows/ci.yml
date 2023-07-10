@@ -4,14 +4,16 @@ on:
     types: [trigger-event]
 
 jobs:
-  build-and-test:
-    name: run-workflow
+  build:
     runs-on: ubuntu-latest
+    name: run-workflow
 
     steps:
-    - uses: actions/checkout@v2
+    - name: use an action
+      uses: actions/checkout@v2
       with:
         fetch-depth: 0
+
     - name: print trigger details
     run: |
       echo ${{ github.event.client_payload.github.action}}
