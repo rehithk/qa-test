@@ -6,7 +6,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: run-workflow
 
     steps:
     - name: use an action
