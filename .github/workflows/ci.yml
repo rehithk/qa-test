@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: use an action for trigger
+    - name: use an action
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
